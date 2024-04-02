@@ -6,6 +6,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#include "user.h"
+
 #define MAX_USERNAME_LENGTH 20
 #define MAX_PASSWORD_LENGTH 20
 #define FILENAME "password.txt"
@@ -21,6 +23,7 @@ int main() {
     printf("Welcome to the Movie booking application\n");
     printf("1. Login\n");
     printf("2. Create Account\n");
+    printf("3. Exit\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
 
@@ -31,6 +34,9 @@ int main() {
         case 2:
             createAccount();
             break;
+        case 3:
+        	exit(0);
+        	break;
         default:
             printf("Invalid choice\n");
             break;
@@ -91,10 +97,12 @@ void login() {
         if (strcmp(username, fileUsername) == 0 && strcmp(password, filePassword) == 0) {
             fclose(file);
             printf("Login successful\n");
-            return;
+            //return;
+            //main1();
         }
     }
-
+	main1();
+	//insert_details();
     fclose(file);
     printf("Login failed. Incorrect username or password\n");
 }
